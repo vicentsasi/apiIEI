@@ -92,7 +92,7 @@ namespace apiIEI.Extractors
                         }
                         else
                         {
-                            eliminados += $"(Comunitat Valenciana, {centro.nombre}, {centro.loc_nombre}, Ya existe en la base de datos)\r\n";
+                            eliminados += $"(Comunitat  Valenciana, {centro.nombre}, {centro.loc_nombre}, Ya existe en la base de datos)\r\n";
                         }
                     }
                 }
