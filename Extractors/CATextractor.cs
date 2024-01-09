@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Drawing.Text;
 using System.IO;
 using System.Threading.Tasks;
-using apiIEI.Extractors;
+using apiIEI.Entities;
 using Aspose.Cells;
 using MySqlX.XDevAPI.Relational;
 using Newtonsoft.Json;
 using OpenQA.Selenium;
 using practiquesIEI.Entities;
+using apiIEI.ConexionBD;
 
 namespace apiIEI.Extractors
 {
@@ -51,7 +52,7 @@ namespace apiIEI.Extractors
 
                     if (provincia != null)
                     {
-                        ConexionBD.insertProvincia(provincia);
+                        ConexionBD.ConexionBD.insertProvincia(provincia);
                     }
 
                     localidad localidad = new localidad();
@@ -72,7 +73,7 @@ namespace apiIEI.Extractors
 
                     if (localidad != null)
                     {
-                        ConexionBD.insertLocalidad(localidad);
+                        ConexionBD.ConexionBD.insertLocalidad(localidad);
                     }
 
                 }
@@ -81,7 +82,7 @@ namespace apiIEI.Extractors
                     if (centro != null)
                     {
                         //Se inserta el centro en la BD y se suma en el recuento de centros introducidos 
-                        if (await ConexionBD.insertCentro(centro))
+                        if (await ConexionBD.ConexionBD.insertCentro(centro))
                         {
                             inserts++;
                         }

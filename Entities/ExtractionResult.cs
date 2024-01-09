@@ -1,4 +1,4 @@
-﻿namespace apiIEI.Extractors
+﻿namespace apiIEI.Entities
 {
     public class ExtractionResult
     {

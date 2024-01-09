@@ -9,6 +9,7 @@ using OpenQA.Selenium;
 using practiquesIEI.Entities;
 using OpenQA.Selenium.Support.UI;
 using System.Threading.Tasks;
+using apiIEI.Entities;
 
 namespace apiIEI.Extractors
 {
@@ -38,7 +39,7 @@ namespace apiIEI.Extractors
                     {
                         provincia.codigo = "30";
                         provincia.nombre = "Múrcia";
-                        ConexionBD.insertProvincia(provincia);
+                        ConexionBD.ConexionBD.insertProvincia(provincia);
                     }
                     //Crear localidad
                     localidad localidad = new localidad();
@@ -60,7 +61,7 @@ namespace apiIEI.Extractors
                     if (localidad != null)
                     {
                         localidad.prov_codigo = provincia.codigo;
-                        ConexionBD.insertLocalidad(localidad);
+                        ConexionBD.ConexionBD.insertLocalidad(localidad);
                     }
 
                 }
@@ -68,7 +69,7 @@ namespace apiIEI.Extractors
                 {
                     if (centro != null)
                     {
-                        if (await ConexionBD.insertCentro(centro))
+                        if (await ConexionBD.ConexionBD.insertCentro(centro))
                         {
                             inserts++;
                         }

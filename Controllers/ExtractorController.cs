@@ -1,3 +1,5 @@
+using apiIEI.ConexionBD;
+using apiIEI.Entities;
 using apiIEI.Extractors;
 using Microsoft.AspNetCore.Mvc;
 using Org.BouncyCastle.Asn1.Crmf;

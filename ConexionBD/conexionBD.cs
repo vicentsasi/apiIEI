@@ -14,7 +14,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.DevTools;
 using practiquesIEI.Entities;
 
-namespace apiIEI.Extractors
+namespace apiIEI.ConexionBD
 {
     public class ConexionBD
     {

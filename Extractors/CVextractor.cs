@@ -11,7 +11,7 @@ using OpenQA.Selenium.Support.UI;
 using System.Globalization;
 using System.Threading.Tasks;
 using System.Drawing;
-using apiIEI.Extractors;
+using apiIEI.Entities;
 
 namespace apiIEI.Extractors
 {
@@ -56,7 +56,7 @@ namespace apiIEI.Extractors
 
                     if (provincia != null)
                     {
-                        ConexionBD.insertProvincia(provincia);
+                        ConexionBD.ConexionBD.insertProvincia(provincia);
                     }
 
                     localidad localidad = new localidad();
@@ -77,7 +77,7 @@ namespace apiIEI.Extractors
 
                     if (provincia != null)
                     {
-                        ConexionBD.insertLocalidad(localidad);
+                        ConexionBD.ConexionBD.insertLocalidad(localidad);
                     }
 
                 }
@@ -86,13 +86,12 @@ namespace apiIEI.Extractors
                     if (centro != null)
                     {
                         //Se inserta el centro en la BD y se suma en el recuento de centros introducidos 
-                        if (await ConexionBD.insertCentro(centro))
+                        if (await ConexionBD.ConexionBD.insertCentro(centro))
                         {
                             inserts++;
                         }
                         else
                         {
-                            reparados = "";
                             eliminados += $"(Comunitat Valenciana, {centro.nombre}, {centro.loc_nombre}, Ya existe en la base de datos)\r\n";
                         }
                     }
