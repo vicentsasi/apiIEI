@@ -79,7 +79,7 @@ public class ExtractorController : ControllerBase
         }
     }
 
-    [HttpGet("getAllCentros")]
+    [HttpPost("getAllCentros")]
     public async Task<IActionResult> GetAllCentros()
     {
         try
@@ -102,7 +102,7 @@ public class ExtractorController : ControllerBase
         }
     }
 
-    [HttpGet("findCentros")]
+    [HttpPost("findCentros")]
     public async Task<IActionResult> FindCentros([FromQuery] string loc, [FromQuery] string tipo, [FromQuery] string prov, [FromQuery] string cp)
     {
         try
@@ -125,7 +125,7 @@ public class ExtractorController : ControllerBase
         }
     }
 
-    [HttpGet("borrar")]
+    [HttpPost("borrar")]
     public async Task<IActionResult> borrarAllCentros()
     {
         try
