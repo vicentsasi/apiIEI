@@ -22,7 +22,7 @@ public class ExtractorController : ControllerBase
                 return BadRequest($"Error en la extracción para CVextractor: {result.ErrorMessage}");
             }
 
-            return Ok($"Extracción exitosa para CVextractor\nEliminados: {result.Eliminados}\nReparados: {result.Reparados}\nInserts: {result.Inserts}");
+            return Ok(result);
         }
         catch (Exception ex)
         {
@@ -45,7 +45,7 @@ public class ExtractorController : ControllerBase
                 return BadRequest($"Error en la extracción para CATEXTRAXTOR: {result.ErrorMessage}");
             }
 
-            return Ok($"Extracción exitosa para CATextractor\nEliminados: {result.Eliminados}\nReparados: {result.Reparados}\nInserts: {result.Inserts}");
+            return Ok(result);
         }
         catch (Exception ex)
         {
@@ -68,7 +68,7 @@ public class ExtractorController : ControllerBase
                 return BadRequest($"Error en la extracción para MURextractor: {result.ErrorMessage}");
             }
 
-            return Ok($"Extracción exitosa para MURextractor\nEliminados: {result.Eliminados}\nReparados: {result.Reparados}\nInserts: {result.Inserts}");
+            return Ok(result);
 
 
         }

@@ -19,6 +19,10 @@ builder.Services.AddSingleton<ConexionBD>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//// Configura el puerto en el que la aplicación escuchará las solicitudes
+//var port = 7000; // Reemplaza con el puerto que desees
+//builder.Configuration[WebHostDefaults.ServerUrlsKey] = $"http://localhost:{port}";
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -35,4 +39,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
 
