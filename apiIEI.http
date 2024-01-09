@@ -1,0 +1,6 @@
+@apiIEI_HostAddress = http://localhost:5135
+
+GET {{apiIEI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
