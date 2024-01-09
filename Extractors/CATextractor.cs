@@ -150,15 +150,14 @@ namespace apiIEI.Extractors
                 //descripción
                 centro.descripcion = row.estudis;
 
-
-                if (row.nom_naturalesa != null)
+                string regimen = row.nom_naturalesa;
+                if (!string.IsNullOrEmpty(regimen))
                 {
-                    string regimen = row.nom_naturalesa;
                     switch (regimen)
                     {
                         case "Públic": centro.tipo = tipo_centro.Público; break;
                         case "Privat": centro.tipo = tipo_centro.Privado; break;
-                        default: centro.tipo = tipo_centro.Otros; break;
+                       
                     }
                 }
                 else {

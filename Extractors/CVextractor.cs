@@ -128,7 +128,6 @@ namespace apiIEI.Extractors
                     string numero = dynamicData.NUMERO;
                     // Concatenar los valores en una sola cadena para la columna "Direccion"
                     centro.direccion = $"{tipoVia} {direccion} {numero}";
-                    reparados += $"(Comunitat Valenciana, {centro.nombre}, {dynamicData.LOCALIDAD}, La dirección esta separada en diferentes campos, Se han concatenado todos los campos)\r\n";
                 }
                 else
                 {
@@ -176,12 +175,11 @@ namespace apiIEI.Extractors
                     case "PRIV. CONC.": centro.tipo = tipo_centro.Concertado; break;
                     case "OTROS": centro.tipo = tipo_centro.Otros; break;
                     default:
-                        eliminados += $"(Comunitat Valenciana, {centro.nombre}, {dynamicData.LOCALIDAD}, El tipo de centro no corresponde)\r\n";
+                        eliminados += $"(Comunitat Valenciana, {centro.nombre}, {dynamicData.LOCALIDAD}, El tipo de centro es erroneo)\r\n";
                         return null;
 
                 }
                 GetLatitudyLongitud(centro.direccion+","+ centro.cod_postal, centro);
-                reparados += $"(Comunitat Valenciana, {centro.nombre}, {dynamicData.LOCALIDAD}, No tiene las coordenadas geográficas, Se han obtenido las coordenadas mediante una web)\r\n";
 
 
                 return centro;
