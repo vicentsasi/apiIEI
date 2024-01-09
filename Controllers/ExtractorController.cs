@@ -1,6 +1,7 @@
 using apiIEI.Extractors;
 using Microsoft.AspNetCore.Mvc;
 using Org.BouncyCastle.Asn1.Crmf;
+using practiquesIEI.Entities;
 using practiquesIEI.Wrappers;
 
 [ApiController]
@@ -107,7 +108,7 @@ public class ExtractorController : ControllerBase
         try
         {
             await ConexionBD.Conectar();  // Asegúrate de que la conexión esté establecida antes de llamar a los métodos.
-            var centros = await ConexionBD.FindCentros(loc, tipo, prov, cp);
+            List<centro_educativo> centros = await ConexionBD.FindCentros(loc, tipo, prov, cp);
 
             if (centros != null)
             {
