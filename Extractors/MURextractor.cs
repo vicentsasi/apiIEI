@@ -126,7 +126,9 @@ namespace apiIEI.Extractors
                 return null;
             }
             //direccion
-            if (dynamicData.domcen != null)
+            
+
+            if (!string.IsNullOrEmpty(dynamicData.domcen.ToString()))
             {
                 centro.direccion = dynamicData.domcen;
             }
