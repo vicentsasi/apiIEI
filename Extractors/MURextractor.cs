@@ -23,7 +23,6 @@ namespace apiIEI.Extractors
             eliminados = "";
             reparados = "";
             inserts = 0;
-            await ConexionBD.Conectar();
             try
             {
                 // Deserializar JSON a una lista de objetos dinámicos

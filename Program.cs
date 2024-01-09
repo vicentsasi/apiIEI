@@ -37,7 +37,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+await ConexionBD.Conectar();
 app.Run();
 
 

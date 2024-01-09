@@ -84,7 +84,6 @@ public class ExtractorController : ControllerBase
     {
         try
         {
-            await ConexionBD.Conectar();  // Asegúrate de que la conexión esté establecida antes de llamar a los métodos.
             var centros = await ConexionBD.getAllCentros();
 
             if (centros != null)
@@ -107,7 +106,6 @@ public class ExtractorController : ControllerBase
     {
         try
         {
-            await ConexionBD.Conectar();  // Asegúrate de que la conexión esté establecida antes de llamar a los métodos.
             List<centro_educativo> centros = await ConexionBD.FindCentros(loc, tipo, prov, cp);
 
             if (centros != null)
@@ -130,12 +128,8 @@ public class ExtractorController : ControllerBase
     {
         try
         {
-            await ConexionBD.Conectar();  // Asegúrate de que la conexión esté establecida antes de llamar a los métodos.
-             await ConexionBD.BorrarCentros();
+            await ConexionBD.BorrarCentros();
             return Ok("Centros Borrados");
-
-
-
         }
         catch (Exception ex)
         {
