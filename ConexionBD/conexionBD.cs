@@ -37,7 +37,6 @@ namespace apiIEI.ConexionBD
                 conn = new MySqlConnection(connectionString);
                 await conn.OpenAsync();
                 Console.WriteLine("Conectado");
-                await BorrarCentros();
             }
             catch (Exception e)
             {
