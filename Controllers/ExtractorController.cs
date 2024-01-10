@@ -138,49 +138,7 @@ public class ExtractorController : ControllerBase
         }
     }
 
-    [HttpGet("getAllCentros")]
-    public async Task<IActionResult> GetAllCentros()
-    {
-        try
-        {
-            var centros = await ConexionBD.getAllCentros();
-
-            if (centros != null)
-            {
-                return Ok(centros);
-            }
-            else
-            {
-                return NotFound("No se encontraron centros educativos.");
-            }
-        }
-        catch (Exception ex)
-        {
-            return BadRequest($"Error al obtener centros educativos: {ex.Message}");
-        }
-    }
-
-    [HttpGet("findCentros")]
-    public async Task<IActionResult> FindCentros([FromQuery] string loc = null, [FromQuery] string tipo = null,[FromQuery] string prov = null,[FromQuery] string cp = null)
-    {
-        try
-        {
-            List<centro_educativo> centros = await ConexionBD.FindCentros(loc, tipo, prov, cp);
-
-            if (centros != null)
-            {
-                return Ok(centros);
-            }
-            else
-            {
-                return NotFound("No se encontraron centros educativos que coincidan con los criterios de búsqueda.");
-            }
-        }
-        catch (Exception ex)
-        {
-            return BadRequest($"Error al buscar centros educativos: {ex.Message}");
-        }
-    }
+    
 
     [HttpPost("borrar")]
     public async Task<IActionResult> borrarAllCentros()
