@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using practiquesIEI.Entities;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using System.Windows.Forms;
-using System.Reflection;
 using OpenQA.Selenium.Support.UI;
-using System.Globalization;
-using System.Threading.Tasks;
-using System.Drawing;
 using apiIEI.Entities;
-
+using System.Diagnostics;
+using System.Text.RegularExpressions;
 namespace apiIEI.Extractors
+
 {
     public class CVextractor
     {
@@ -179,8 +173,13 @@ namespace apiIEI.Extractors
                         return null;
 
                 }
-                GetLatitudyLongitud(centro.direccion+","+ centro.cod_postal, centro);
-
+                string patron = "\\([^\\)]*\\)";
+                string resultado = Regex.Replace(centro.direccion, patron, "");
+                GetLatitudyLongitud(resultado+ ",Valencia ", centro);
+                if (centro.latitud == null || centro.longitud == null) {
+                    eliminados += $"(Comunitat Valenciana, {centro.nombre}, {dynamicData.LOCALIDAD}, Error al obtener las coordenadas geográficas)\r\n";
+                    //return null;
+                }
 
                 return centro;
             }

@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Text;
-using System.IO;
-using System.Threading.Tasks;
-using apiIEI.Entities;
-using Aspose.Cells;
-using MySqlX.XDevAPI.Relational;
+﻿using apiIEI.Entities;
 using Newtonsoft.Json;
-using OpenQA.Selenium;
 using practiquesIEI.Entities;
-using apiIEI.ConexionBD;
 
 namespace apiIEI.Extractors
 {
