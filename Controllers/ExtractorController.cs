@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Org.BouncyCastle.Asn1.Crmf;
 using practiquesIEI.Entities;
-using practiquesIEI.Wrappers;
 
 [ApiController]
 [Route("api/[controller]")]
