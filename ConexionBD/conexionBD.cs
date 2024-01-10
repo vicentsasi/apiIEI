@@ -95,7 +95,7 @@ namespace apiIEI.ConexionBD
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Error al insertar centro: {e.Message}");
+                Console.WriteLine($"Error al insertar centro {centro.nombre}: {e.Message}");
             }
             return false;
         }
@@ -116,11 +116,7 @@ namespace apiIEI.ConexionBD
                     commandExistencia.Parameters.AddWithValue("@nombre", loc.nombre);
                     commandExistencia.Parameters.AddWithValue("@codigo", loc.codigo);
                     int cantidadExistente = Convert.ToInt32(commandExistencia.ExecuteScalar());
-                    if (cantidadExistente > 0)
-                    {
-                        Console.WriteLine($"La localidad {loc.nombre} ya existe en la base de datos.");
-                    }
-                    else
+                    if (cantidadExistente == 0)
                     {
                         using (MySqlCommand command = new MySqlCommand(
                         $"INSERT INTO localidad(loc_codigo, loc_nombre, prov_codigo) VALUES (@codigo,@nombre,@prov_codigo)", conn))
@@ -155,11 +151,7 @@ namespace apiIEI.ConexionBD
                     commandExistencia.Parameters.AddWithValue("@nombre", prov.nombre);
                     commandExistencia.Parameters.AddWithValue("@codigo", prov.codigo);
                     int cantidadExistente = Convert.ToInt32(commandExistencia.ExecuteScalar());
-                    if (cantidadExistente > 0)
-                    {
-                        Console.WriteLine($"La Provincia {prov.nombre} ya existe en la base de datos.");
-                    }
-                    else
+                    if (cantidadExistente == 0)
                     {
                         using (MySqlCommand command = new MySqlCommand(
                         $"INSERT INTO provincia(prov_codigo, prov_nombre) VALUES (@codigo,@nombre)", conn))

@@ -24,6 +24,7 @@ namespace apiIEI.Extractors
             eliminados = "";
             reparados = "";
             inserts = 0;
+            Console.WriteLine("Insertando datos de MUR.json");
             try
             {
                 // Deserializar JSON a una lista de objetos dinámicos
@@ -88,6 +89,7 @@ namespace apiIEI.Extractors
             result.Eliminados = eliminados;
             result.Reparados = reparados;
             result.Inserts = inserts;
+            Console.WriteLine("Inserción terminada");
             return result;
         }
 
@@ -140,7 +142,7 @@ namespace apiIEI.Extractors
             //descripcion
             centro.descripcion = dynamicData.presentacionCorta;
             //latitud
-            if (dynamicData["geo-referencia"]["lat"] != null)
+            if (dynamicData["geo-referencia"]["lat"] != null && dynamicData["geo-referencia"]["lat"].ToString() != "")
             {
                 centro.latitud = dynamicData["geo-referencia"]["lat"].ToString().Replace(",", ".");
             }
@@ -150,7 +152,7 @@ namespace apiIEI.Extractors
                 return null;
             }
             //longitud
-            if (dynamicData["geo-referencia"]["lon"] != null)
+            if (dynamicData["geo-referencia"]["lon"] != null && dynamicData["geo-referencia"]["lon"].ToString() != "")
             {
                 centro.longitud = dynamicData["geo-referencia"]["lon"].ToString().Replace(",", ".");
             }

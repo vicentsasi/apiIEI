@@ -15,7 +15,9 @@ namespace apiIEI.Extractors
             eliminados = "";
             reparados = "";
             inserts = 0;
-            try {
+            Console.WriteLine("Insertando datos de CAT.xml");
+            try
+            {
                 // Deserializar JSON a una lista de objetos dinámicos
                 dynamic jsontext = JsonConvert.DeserializeObject<dynamic>(jsonData);
                 List<centro_educativo> ListaCentros = new List<centro_educativo>();
@@ -93,6 +95,7 @@ namespace apiIEI.Extractors
             result.Eliminados = eliminados;
             result.Reparados = reparados;
             result.Inserts = inserts;
+            Console.WriteLine("Inserción terminada");
             return result;
         }
         public static centro_educativo JsonACentro(dynamic row)
@@ -138,9 +141,11 @@ namespace apiIEI.Extractors
 
                 //telefono
                 centro.telefono = 0;
+
                 //descripción
                 centro.descripcion = row.estudis;
 
+                //centro
                 string regimen = row.nom_naturalesa;
                 if (!string.IsNullOrEmpty(regimen))
                 {
@@ -154,25 +159,25 @@ namespace apiIEI.Extractors
                 else {
                     eliminados += $"(Catalunya, {centro.nombre}, {row.nom_municipi}, No tiene el tipo de centro)\r\n";
                     return null; }
-
-                if (row.coordenades_geo_x != null)
+                //longitud
+                if (row.coordenades_geo_x != null && row.coordenades_geo_x != "")
                 {
                     centro.longitud = row.coordenades_geo_x;
                 }
                 else
                 {
-                    eliminados += $"(Catalunya, {centro.nombre}, {row.nom_municipi}, No tiene las coordenadas de geolocalización)\r\n";
+                    eliminados += $"(Catalunya, {centro.nombre}, {row.nom_municipi}, No tiene las coordenadas de geográficas-longitud)\r\n";
                     return null;
                 }
 
-
-                if (row.coordenades_geo_y != null)
+                //latitud
+                if (row.coordenades_geo_y != null && row.coordenades_geo_y != "")
                 {
                     centro.latitud = row.coordenades_geo_y;
                 }
                 else
                 {
-                    eliminados += $"(Catalunya, {centro.nombre}, {row.nom_municipi}, No tiene las coordenadas de geolocalización)\r\n";
+                    eliminados += $"(Catalunya, {centro.nombre}, {row.nom_municipi}, No tiene las coordenadas de geográficas-latitud)\r\n";
                     return null;
                 }
 

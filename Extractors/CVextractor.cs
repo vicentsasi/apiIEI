@@ -21,6 +21,7 @@ namespace apiIEI.Extractors
             eliminados = "";
             reparados = "";
             inserts = 0;
+            Console.WriteLine("Insertando datos de CV.csv");
             try
             { // Deserializar JSON a una lista de objetos dinámicos
                 List<dynamic> dynamicDataList = JsonConvert.DeserializeObject<List<dynamic>>(jsonData);
@@ -98,6 +99,7 @@ namespace apiIEI.Extractors
             result.Eliminados = eliminados;
             result.Reparados = reparados;
             result.Inserts = inserts;
+            Console.WriteLine("Inserción terminada");
             return result;
         }
         static centro_educativo JsonACentro(dynamic dynamicData)
@@ -175,10 +177,16 @@ namespace apiIEI.Extractors
                 }
                 string patron = "\\([^\\)]*\\)";
                 string resultado = Regex.Replace(centro.direccion, patron, "");
-                GetLatitudyLongitud(resultado+ ",Valencia ", centro);
+                if (centro.nombre == "CENTRE PÚBLIC FPA PLA DE LA VALLONGA")
+                {
+                    GetLatitudyLongitud("C. Madrid, 0, 03002 Alicante", centro);
+                }
+                else
+                {
+                    GetLatitudyLongitud(resultado + ",Valencia ", centro);
+                }
                 if (centro.latitud == null || centro.longitud == null) {
-                    eliminados += $"(Comunitat Valenciana, {centro.nombre}, {dynamicData.LOCALIDAD}, Error al obtener las coordenadas geográficas)\r\n";
-                    //return null;
+                    reparados += $"(Comunitat Valenciana, {centro.nombre}, {dynamicData.LOCALIDAD}, Error al obtener las coordenadas geográficas mediante la web, Se ha insertado igualmente con los valores a null)\r\n";
                 }
 
                 return centro;
@@ -229,7 +237,7 @@ namespace apiIEI.Extractors
                         // Manejar el caso en el que no se encuentre la geolocalización
                         centro.latitud = null;
                         centro.longitud = null;
-                        Console.WriteLine("No se ha podido obtener la geolocalización");
+                        Console.WriteLine($"No se ha podido obtener la geolocalización de {centro.nombre}");
                     }
                 }
                 catch (Exception ex)
