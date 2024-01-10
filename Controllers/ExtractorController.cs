@@ -81,7 +81,7 @@ public class ExtractorController : ControllerBase
         }
     }
 
-    [HttpPost("getAllCentros")]
+    [HttpGet("getAllCentros")]
     public async Task<IActionResult> GetAllCentros()
     {
         try
@@ -103,8 +103,8 @@ public class ExtractorController : ControllerBase
         }
     }
 
-    [HttpPost("findCentros")]
-    public async Task<IActionResult> FindCentros([FromQuery] string loc, [FromQuery] string tipo, [FromQuery] string prov, [FromQuery] string cp)
+    [HttpGet("findCentros")]
+    public async Task<IActionResult> FindCentros([FromQuery] string loc = null, [FromQuery] string tipo = null,[FromQuery] string prov = null,[FromQuery] string cp = null)
     {
         try
         {
